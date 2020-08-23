@@ -15,9 +15,34 @@
 
 using namespace std;
 
-Void Propagate(double num0, double num1, double num2, double num3, double num4, double num5, double energy, double totaldistance ,int nutype, double density, double error) 
+//Defining functions
+
+void Propagate(double, double, double, double, double, double, double, double,int, double, double);
+
+void main(){
+
+  //Defining variables
+  
+  double num0 = 0.297;                  // Using 'defult' values from Visos
+  double num1 = 0.425;                  // "
+  double num2 = 0.0215;                 // " 
+  double num3 = 0.0000737;              // "
+  double num4 = 0.00249;                // "
+  double num5 = 248;                    // "
+  double energy = 0.003;                // Using 'Juno' Values
+  double totaldistance = 100;           // " (But change 53 to 100)
+  int nutype = -1;                      // "
+  double density = 2.6;                 // "
+  double error = 0.1;                   // "
+
+}
+
+
+
+
+void Propagate(double num0, double num1, double num2, double num3, double num4, double num5, double energy, double totaldistance ,int nutype, double density, double error) 
 {
-  printf("hi\n");
+  printf("Start of function\n");
   //vector<double> X;
   //vector<double> Y;
   //vector<double> D;
