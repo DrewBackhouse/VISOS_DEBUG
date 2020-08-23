@@ -6,7 +6,6 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
-#include <malloc.h>
 #include "NeutrinoPropagator.h"
 #include "BargerPropagator.h"
 #include "EarthDensity.h"
@@ -19,7 +18,7 @@ using namespace std;
 
 void Propagate(double, double, double, double, double, double, double, double,int, double, double);
 
-void main(){
+int main(){
 
   //Defining variables
   
@@ -34,6 +33,12 @@ void main(){
   int nutype = -1;                      // "
   double density = 2.6;                 // "
   double error = 0.1;                   // "
+
+  //calling function
+
+  Propagate(num0, num1, num2, num3, num4, num5, energy, totaldistance , nutype, density, error); 
+
+  return 0;
 
 }
 
