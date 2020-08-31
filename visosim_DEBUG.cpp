@@ -6,17 +6,18 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
-//#include "NeutrinoPropagator.h"
-//#include "BargerPropagator.h"
-//#include "EarthDensity.h"
-//#include "mosc.h"
-//#include "mosc3.h"
-
+#include <malloc.h>
+#include "NeutrinoPropagator.h"
+#include "BargerPropagator.h"
+#include "EarthDensity.h"
+#include "mosc.h"
+#include "mosc3.h"
 using namespace std;
 
 //Defining functions
 
 void Propagate(double, double, double, double, double, double, double, double,int, double, double);
+
 
 int main (void) {
 
@@ -39,7 +40,7 @@ int main (void) {
   //calling function
 
   Propagate(num0, num1, num2, num3, num4, num5, energy, totaldistance , nutype, density, error);
-  
+
 }
 
 void Propagate(double num0, double num1, double num2, double num3, double num4, double num5, double energy, double totaldistance ,int nutype, double density, double error) 
