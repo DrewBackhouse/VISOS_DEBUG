@@ -6,11 +6,11 @@
 #include <algorithm>
 #include <sstream>
 #include <iterator>
-#include "NeutrinoPropagator.h"
-#include "BargerPropagator.h"
-#include "EarthDensity.h"
-#include "mosc.h"
-#include "mosc3.h"
+//#include "NeutrinoPropagator.h"
+//#include "BargerPropagator.h"
+//#include "EarthDensity.h"
+//#include "mosc.h"
+//#include "mosc3.h"
 
 using namespace std;
 
@@ -18,7 +18,9 @@ using namespace std;
 
 void Propagate(double, double, double, double, double, double, double, double,int, double, double);
 
-int main(){
+int main (void) {
+
+  printf("DEBUG: Start of main function\n");
 
   //Defining variables
   
@@ -36,18 +38,15 @@ int main(){
 
   //calling function
 
-  Propagate(num0, num1, num2, num3, num4, num5, energy, totaldistance , nutype, density, error); 
-
-  return 0;
-
+  Propagate(num0, num1, num2, num3, num4, num5, energy, totaldistance , nutype, density, error);
+  
 }
-
-
-
 
 void Propagate(double num0, double num1, double num2, double num3, double num4, double num5, double energy, double totaldistance ,int nutype, double density, double error) 
 {
-  printf("Start of function\n");
+  
+  printf("DEBUG: Start of function\n");
+  
   //vector<double> X;
   //vector<double> Y;
   //vector<double> D;
@@ -55,11 +54,11 @@ void Propagate(double num0, double num1, double num2, double num3, double num4, 
   double* B = (double*)malloc(npoint * 8 * 3);
   double* A = (double*)malloc(npoint * 8 * 3);
 
-  BargerPropagator *bNunue = new BargerPropagator();
-  bNunue->UseMassEigenstates(false);
+  //Test  BargerPropagator *bNunue = new BargerPropagator();
+  //Test  bNunue->UseMassEigenstates(false);
 
   //set PMNS can't be global, otherwise will be rewritten by other instances of bNunue
-  const double non_doubled_angle = true;
+  //Test const double non_doubled_angle = true;
   // Set up 6 oscpars
   //(num0)= sin^2(theta12)
   //(num1)= sin^2(theta23)
@@ -67,21 +66,20 @@ void Propagate(double num0, double num1, double num2, double num3, double num4, 
   //(num3)= dm^2_21
   //(num4)= dm^2_32
   //(num5) = dcp
-  bNunue->SetMNS( num0, num2, num1, num3, num4, num5, energy, non_doubled_angle, nutype);
+  //Test  bNunue->SetMNS( num0, num2, num1, num3, num4, num5, energy, non_doubled_angle, nutype);
   
   const double distPoint = totaldistance/44000;
   double distance = 0;
   
   for(int ii=0; ii<npoint && distance<=totaldistance; ii++){
     // Set PMNS and propagate with given distance
-    bNunue->propagateLinear(nutype, distance, density);
+    //Test  bNunue->propagateLinear(nutype, distance, density);
     
     //probablity projection.
-    const double t_pnue = bNunue->GetProb( nutype, 1);
-    const double t_pnumu = bNunue->GetProb( nutype, 2);
-    const double t_pnutau = bNunue->GetProb( nutype, 3);
-    //const double t_sum = t_pnue + t_pnumu + t_pnutau;
-
+    const double t_pnue = 1.0/3.0; //test  bNunue->GetProb( nutype, 1);
+      const double t_pnumu = 1.0/3.0; //Test bNunue->GetProb( nutype, 2);
+      const double t_pnutau = 1.0/3.0; //Test bNunue->GetProb( nutype, 3);
+      //Test non_doubled_angleconst double t_sum = t_pnue + t_pnumu + t_pnutau;
 
     const double radangle = -135 * (M_PI/180);
     const double cosa = cos(radangle);
@@ -89,7 +87,7 @@ void Propagate(double num0, double num1, double num2, double num3, double num4, 
 
     const double tmpX =  cosa * t_pnumu - sina * t_pnutau;
     const double tmpY =  sina * t_pnumu + cosa * t_pnutau + 1/sqrt(2);
-    const double tmpZ =  t_pnue;
+     const double tmpZ =  t_pnue;
 
     const double t_X = tmpX;
 
