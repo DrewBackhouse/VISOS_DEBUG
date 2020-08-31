@@ -18,10 +18,7 @@ using namespace std;
 
 void Propagate(double, double, double, double, double, double, double, double,int, double, double);
 
-
-int main (void) {
-
-  printf("DEBUG: Start of main function\n");
+void main(){
 
   //Defining variables
   
@@ -36,10 +33,6 @@ int main (void) {
   int nutype = -1;                      // "
   double density = 2.6;                 // "
   double error = 0.1;                   // "
-
-  //calling function
-
-  Propagate(num0, num1, num2, num3, num4, num5, energy, totaldistance , nutype, density, error);
 
 }
 
